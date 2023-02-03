@@ -14,7 +14,14 @@ window.onscroll = function () {
 const hamburger = document.querySelector("#hamburger");
 const navMenu = document.querySelector("#nav-menu");
 
-hamburger.addEventListener("click", function () {
+hamburger.addEventListener("click", function (e) {
   hamburger.classList.toggle("hamburger-active");
   navMenu.classList.toggle("hidden");
+});
+
+document.addEventListener("click", function (e) {
+  if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+    hamburger.classList.remove("hamburger-active");
+    navMenu.classList.add("hidden");
+  }
 });
